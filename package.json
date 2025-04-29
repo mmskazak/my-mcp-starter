@@ -31,17 +31,20 @@
   "scripts": {
     "build": "unbuild",
     "chmod-run": "node -e \"fs.chmodSync('dist/index.mjs', '755'); if (require('fs').existsSync('dist/cli.mjs')) require('fs').chmodSync('dist/cli.mjs', '755');\"",
-    "start": "nodemon --exec 'tsx src/index.ts'",
+    "start": "node dist/index.mjs",
     "dev": "unbuild --stub",
     "run-cli": "node bin/cli.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "release": "tsx scripts/release.ts"
+    "release": "tsx scripts/release.ts",
+    "inspector": "npx @modelcontextprotocol/inspector node dist/index.mjs"
   },
   "dependencies": {
-    "citty": "^0.1.6"
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "citty": "^0.1.6",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.0",
